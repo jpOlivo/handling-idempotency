@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: idempotent-account-service
+  resources:
+    add-mappings: false
+  mvc:
+    throw-exception-if-no-handler-found: true
+  http:
+    encoding.force: true
+
+## Persistence config
+  datasource:
+    hikari.connectionTimeout: 15000
+    hikari.maximumPoolSize: 5
+    platform: postgresql     
+    initialization-mode: always   
+    url: jdbc:postgresql://localhost:5432/account_db
+    username: postgres
+    password: changeme
+  jpa:
+    generate-ddl: false
+    hibernate.ddl-auto: none
+    #show-sql: true
+    
+# Data for external fake api
+api-fake:
+  url: http://localhost:8081
+#  timeout: 5
+
+#logging:
+#   level:
+#      org.springframework.orm.jpa: DEBUG
+#      org.springframework.transaction: TRACE
+
